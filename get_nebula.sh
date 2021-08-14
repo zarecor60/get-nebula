@@ -34,10 +34,18 @@ sudo rm -rf $install_directory
 # Install new nebula
 sudo mkdir $install_directory
 sudo tar -C $install_directory -xzf nebula-$arch.tar.gz
-#echo "Setting PATH to include nebula binaries"
+echo "Setting PATH to include nebula binaries"
+if grep -q 'PATH=$PATH' ~/.bashrc && grep -q $install_directory ~/.bashrc
+then
+  :
+elif grep -q 'PATH=$PATH' ~/.bashrc && ! grep -q $install_directory ~/.bashrc
+then
+  sed -i "PATH=$PATH a\\:$install_directory" ~/.bashrc
+else
+  sed -i "$ a\export PATH=$PATH:\\$install_directory" ~/.bashrc
+fi
+
 #PATH=$PATH:$install_directory
 #echo $PATH >> ~/.profile
 
 rm nebula-$arch.tar.gz
-#
-#
