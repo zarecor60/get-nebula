@@ -10,7 +10,7 @@
 #   https://github.com/zarecor60/get-nebula
 
 # Site-Specific variables
-install_directory="/usr/local/bin/nebula.d/"
+install_directory="/usr/local/bin/nebula.d"
 arch="linux-amd64"
 
 #future
@@ -28,7 +28,7 @@ unset url
 unset full_url
 
 # Remove Old nebula version
-echo "Removing old nebula binaries from $install_directory"
+echo "Removing old nebula binaries from $install_directory/"
 sudo rm -rf $install_directory
 
 # Install new nebula
